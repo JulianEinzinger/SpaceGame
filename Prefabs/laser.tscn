@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck7wluq2uq1x7"]
+
+[ext_resource type="Texture2D" uid="uid://bdamno0xbajbb" path="res://Sprites/laser.png" id="1_ahr7p"]
+[ext_resource type="Script" path="res://Scripts/Laser.cs" id="2_7tcom"]
+[ext_resource type="PackedScene" uid="uid://dcs0qnexvkre1" path="res://Prefabs/movement.tscn" id="3_xjnaa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1hr7h"]
+height = 280.0
+
+[node name="Laser" type="Node2D"]
+script = ExtResource("2_7tcom")
+
+[node name="Collision" type="Area2D" parent="."]
+scale = Vector2(0.1, 0.1)
+
+[node name="LaserSprite" type="Sprite2D" parent="Collision"]
+texture = ExtResource("1_ahr7p")
+
+[node name="Collider" type="CollisionShape2D" parent="Collision"]
+shape = SubResource("CapsuleShape2D_1hr7h")
+
+[node name="Movement" parent="." instance=ExtResource("3_xjnaa")]
+position = Vector2(292, 185)
+scale = Vector2(0.1, 0.1)
+_speed = 500.0

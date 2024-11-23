@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1l53gk1yddug"]
+
+[ext_resource type="Texture2D" uid="uid://bbphm30wt8oev" path="res://Sprites/Player_Turn_Left/Player Turn Left0000.png" id="1_6xh5t"]
+[ext_resource type="Script" path="res://Scripts/Player.cs" id="2_f4nul"]
+[ext_resource type="PackedScene" uid="uid://ck7wluq2uq1x7" path="res://Prefabs/laser.tscn" id="3_eq4wc"]
+[ext_resource type="AudioStream" uid="uid://crgm7w5boniaq" path="res://Audio/laser_shot.wav" id="4_el8i1"]
+[ext_resource type="Texture2D" uid="uid://kjx171cdjrqh" path="res://Sprites/SpaceBG_Overlay.png" id="4_gkv2o"]
+[ext_resource type="PackedScene" uid="uid://ckkbtkacgayql" path="res://Prefabs/asteroid.tscn" id="6_ymehq"]
+
+[node name="worldroot" type="Node2D"]
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(899, 535)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_6xh5t")
+script = ExtResource("2_f4nul")
+_speed = 270.0
+_laserPrefab = ExtResource("3_eq4wc")
+_laserSpawnOffset = Vector2(0, -40)
+
+[node name="LaserSound" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("4_el8i1")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_gkv2o")
+
+[node name="Asteroid" parent="." instance=ExtResource("6_ymehq")]
+position = Vector2(736, 50)
